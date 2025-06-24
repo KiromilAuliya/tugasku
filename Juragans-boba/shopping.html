@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juragan Boba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
+ 
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="shopping.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">Juragans <span>Boba</span></a>
+  
+    <div class="navbar-extra">
+      <a href="nyoba.html" target="_blank" class="contact-btn">Home</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="menu" class="menu-section">
+      <br>
+      <br>
+      <h2><span>Menu</span> Kami</h2>
+      <div class="menu">
+        <div class="menu-item">
+          <img src="boba2.jpg" alt="Brown Sugar Boba" />
+          <h3>Brown Sugar Boba</h3>
+          <p>Rp 8.000</p>
+          <button onclick="addToCart('Brown Sugar Boba', 8000)">Tambah</button>
+        </div>
+        <div class="menu-item">
+          <img src="aren1.jpg" alt="Es Gula Aren" />
+          <h3>Es Gula Aren</h3>
+          <p>Rp 5.000</p>
+          <button onclick="addToCart('Es Gula Aren', 5000)">Tambah</button>
+        </div>
+      </div>
+    </section>
+
+<div class="cart" id="cart">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Keranjang</h2>
+    <span onclick="closeCart()" style="cursor: pointer; font-weight: bold; font-size: 20px; color: red;">X</span>
+  </div>
+      <ul id="cart-items"></ul>
+      <p>Total: Rp <span id="total">0</span></p>
+      <button class="bayar" onclick="showPaymentForm()">Bayar Sekarang</button>
+    </div>
+
+    <div id="payment-form" style="display:none;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Form Pembayaran</h2>
+    <span onclick="closePaymentForm()" style="cursor: pointer; font-weight: bold; font-size: 20px; color: red;">X</span>
+  </div>
+<div style="margin-bottom: 20px;">
+  <h4>Silakan transfer ke salah satu metode berikut:</h4>
+  <br>
+  <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+    <div style="text-align: center;">
+      <img src="dana.jpg" alt="QRIS DANA" style="width: 150px; border-radius: 10px;" />
+      <p><strong>DANA</strong><br>089644766715<br>a.n. KiromilAuliya'</p>
+    </div>
+    <div style="text-align: center;">
+      <img src="gopay.jpg" alt="QRIS GOPAY" style="width: 150px; border-radius: 10px;" />
+      <p><strong>GOPAY</strong><br>089644766715<br>a.n. KiromilAuliya'</p>
+    </div>
+  </div>
+</div>
+      <form onsubmit="submitPayment(event)">
+        <label>Nama :</label>
+        <input type="text" id="nama" required />
+        <label>Nomor WA :</label>
+        <input type="text" id="wa" required />
+        <label>Pembayaran via :</label>
+        <input type="text" id="via" required />
+        <button type="submit">Kirim Pembayaran</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const cart = [];
+
+function addToCart(name, price) {
+
+  const existingItem = cart.find(item => item.name === name);
+  
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ 
+      name, 
+      price,
+      quantity: 1 
+    });
+  }
+  
+  updateCart();
+  showCart();
+}
+
+function updateCart() {
+  const cartItems = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total');
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const li = document.createElement('li');
+    const itemTotal = item.price * item.quantity;
+    
+    li.innerHTML = `
+      <span>${item.name}</span>
+      <div class="quantity-control">
+        <button onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+        <span>${item.quantity}</span>
+        <button onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+        <span style="margin-left: 10px;">Rp ${itemTotal}</span>
+        <span onclick="removeItem(${index})" style="color:red; cursor:pointer; font-weight:bold; margin-left:10px;">X</span>
+      </div>
+    `;
+    
+    cartItems.appendChild(li);
+    total += itemTotal;
+  });
+
+  totalEl.textContent = total;
+}
+
+function updateQuantity(index, newQuantity) {
+  if (newQuantity <= 0) {
+    removeItem(index);
+  } else {
+    cart[index].quantity = newQuantity;
+    updateCart();
+  }
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+  if (cart.length === 0) {
+    closeCart();
+  }
+}
+
+function showCart() {
+  const cartElement = document.getElementById('cart');
+  cartElement.classList.remove('hide');
+  cartElement.classList.add('show');
+}
+
+function closeCart() {
+  const cartElement = document.getElementById('cart');
+  cartElement.classList.remove('show');
+  cartElement.classList.add('hide');
+}
+
+
+    function showPaymentForm() {
+      const form = document.getElementById('payment-form');
+      form.style.display = 'block';
+      form.classList.add('show'); 
+      closeCart();
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function closePaymentForm() {
+       const form = document.getElementById('payment-form');
+       form.style.display = 'none';
+       form.classList.remove('show'); 
+    }
+
+
+    function submitPayment(e) {
+  e.preventDefault();
+  const nama = document.getElementById('nama').value;
+  const wa = document.getElementById('wa').value;
+  const via = document.getElementById('via').value;
+
+  if (nama && wa && via) {
+    const nomorAdmin = '6289644766715';
+    
+    const itemList = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+    const totalHarga = cart.reduce((t, i) => t + (i.price * i.quantity), 0);
+
+    const pesan = `Halo Admin Juragans Boba! Saya sudah transfer.\n\nNama : ${nama}\nNomor WA: ${wa}\nProduk : ${itemList} \nPembayaran : ${via} \nTotal : Rp ${totalHarga}\n\nBukti transfer akan saya Upload.`;
+    const encodedPesan = encodeURIComponent(pesan);
+    const linkWA = `https://wa.me/${nomorAdmin}?text=${encodedPesan}`;
+
+    alert('Terima kasih! Tolong kirim bukti transfer ke WhatsApp.');
+    window.open(linkWA, '_blank');
+    e.target.reset();
+    document.getElementById('payment-form').style.display = 'none';
+    cart.length = 0;
+    updateCart();
+    document.getElementById('cart').classList.remove('active');
+  }
+}
+
+
+    const navbarnav = document.querySelector('.navbar-nav');
+    const humburger = document.querySelector('#humburger-menu');
+    humburger.onclick = () => {
+      navbarnav.classList.toggle('active');
+    };
+
+    document.addEventListener('click', function(e) {
+      if (!humburger.contains(e.target) && !navbarnav.contains(e.target)) {
+        navbarnav.classList.remove('active');
+      }
+    });
+    
+    function closeCart() { 
+  const cartElement = document.getElementById('cart');
+  cartElement.classList.remove('show');
+  cartElement.classList.add('hide');
+  setTimeout(() => {
+    cartElement.style.display = 'none';
+  }, 400); 
+}
+
+function closePaymentForm() {
+  document.getElementById('payment-form').style.display = 'none';
+}
+  </script>
+</body>
+</html>

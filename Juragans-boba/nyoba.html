@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juragans Boba</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+     
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  
+ 
+  <script src="https://unpkg.com/feather-icons"></script>
+
+
+   
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link rel="stylesheet" href="nyoba.css" />
+
+    
+  </head>
+  <body>
+   
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">Juragans <span>Boba</span></a>
+      
+      <div class="navbar-nav">
+        <a href="#home" >Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="team.html">Teams</a>
+      </div>
+    
+      <div class="navbar-extra">
+        <a href="https://wa.me/6289644766715" target="_blank" class="contact-btn">Contact Us</a>
+      </div>
+    </nav>
+    
+
+
+   
+   
+
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>Juragans <br>Boba</h1>
+      <p>Nikmati sensasi kenyalnya boba yang berpadu sempurna<br>
+      dengan manisnya gula aren yang meleleh di mulut.</p>
+      <br>
+        <a href="shopping.html" class="cta">Beli sekarang</a>
+      </main>
+    </section>
+
+   
+
+      
+    <section id="about" class="about">
+      <h2><span>Tentang</span> Produk</h2>
+
+      <div class="row">
+        <div class="about-img">
+          <img src="es boba 1.jpeg" alt="Tentang kami" />
+        </div>
+        <div class="content">
+          <h3>Kenapa memilih beli Es Boba di kami?</h3>
+          <p>
+            Karena Es Boba kami ini terbuat dari bahan alami yang baik untuk di konsumsi
+            setiap hari kami juga bisa mengatur konsumsi es atau gula nya sesuai pelanggan es boba kami
+            sehat untuk di konsumsi dan tidak membuat penyakit
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  
+<section id="menu" class="menu">
+  <h2>Menu</h2>
+  <div class="row">
+    <div class="menu-card">
+      <img src="boba2.jpg" alt="Boba Brown Sugar" class="menu-card-img" />
+      <h3 class="menu-card-title">Brown Sugar Boba</h3>
+      <p class="menu-card-price">Rp8.000</p>
+    </div>
+    <div class="menu-card">
+      <img src="aren1.jpg" alt="Boba Matcha" class="menu-card-img" />
+      <h3 class="menu-card-title">Es Gula Aren</h3>
+      <p class="menu-card-price">Rp5.000</p>
+    </div>
+  </div>
+</section>
+
+    
+    <script>
+      feather.replace();
+    </script>
+
+    <script>
+      
+const navbarnav = document.querySelector('.navbar-nav');
+document.querySelector('#humburger-menu').onclick = () =>{
+navbarnav.classList.toggle('active');
+};
+
+const humburger = document.querySelector('#humburger-menu');
+
+document.addEventListener('click', function(e){
+    if(!humburger.contains(e.target) && !navbarnav.contains(e.target)){
+        navbarnav.classList.remove('active');
+    }
+});
+    </script>
+    <footer>
+  <div class="footer-content">
+    <p>&copy; 2025 Juragans Boba. All rights reserved.</p>
+    <p>Hubungi kami:
+      
+      <a href="https://wa.me/6289644766715" target="_blank" style="color: #ffc400;">WhatsApp</a> |
+    
+    </p>
+  </div>
+</footer>
+<script>
+  const aboutSection = document.querySelector('.about .row');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          aboutSection.classList.add('show');
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(aboutSection);
+
+  const menuSection = document.querySelector('.menu .row');
+  const observerMenu = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          menuSection.classList.add('show');
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  observerMenu.observe(menuSection);
+</script>
+
+  </body>
+</html>

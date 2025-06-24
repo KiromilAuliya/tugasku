@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juragans Boba - Our Team</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
+ 
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+   
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+  }
+  .navbar-logo {
+    font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  }
+  .navbar-logo span {
+    color: #ffcc29;
+  }
+  .navbar-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  .navbar-nav a.active {
+    border-bottom: 2px solid orange;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-nav a:hover {
+    color: #ffcc29;
+  }
+  
+  .navbar-extra a {
+    margin-left: 1rem;
+    color: #000000;
+  }
+
+    
+    .menu {
+      padding: 5rem 7% 2rem;
+      background-color: white;
+      text-align: center;
+    }
+
+    .menu h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    
+
+    .menu .row {
+  display: flex;
+  flex-wrap: nowrap; 
+  gap: 1.5rem;
+  justify-content: center;
+  
+  padding-bottom: 1rem;
+}
+
+.menu-card {
+  flex: 0 0 180px; 
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.234);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+    .menu-card.show {
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+
+    .menu-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+
+
+    }
+
+    .menu-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Animation */
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  flex: 1;
+}
+
+.contact-btn {
+ /* border: 2px solid #000; */
+  background-color:  #ffda5f;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #ffc933 ;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">Juragans <span>Boba</span></a>
+   
+  
+    <div class="navbar-extra">
+      <a href="nyoba.html" target="_blank" class="contact-btn">Home</a>
+   
+    </div>
+  </nav>
+
+  <!-- Team Section -->
+  <section id="menu" class="menu">
+    <h2>Nama Anggota</h2>
+    <div class="row">
+      <div class="menu-card">
+        <img src="romi.jpg" alt="Ach Aslichul K A" class="menu-card-img" />
+        <h3 class="menu-card-title">Ach Aslichul K A</h3>
+      </div>
+      <div class="menu-card">
+        <img src="adit1.jpg" alt="Aditya Rizky F" class="menu-card-img" />
+        <h3 class="menu-card-title">Aditya Rizky F</h3>
+      </div>
+      <div class="menu-card">
+        <img src="WhatsApp Image 2025-05-07 at 10.16.01_62a2342e.jpg" alt="Arya Satya P" class="menu-card-img" />
+        <h3 class="menu-card-title">Arya Satya P</h3>
+      </div>
+      <div class="menu-card">
+        <img src="WhatsApp Image 2025-05-07 at 10.18.18_1471c07f.jpg" alt="Azzarel Jagad S K" class="menu-card-img" />
+        <h3 class="menu-card-title">Azzarel Jagad S K</h3>
+      </div>
+      <div class="menu-card">
+        <img src="ucup.jpg" alt="Fadly Yusuf W" class="menu-card-img" />
+        <h3 class="menu-card-title">Fadly Yusuf W</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+ 
+
+  <!-- Script: Intersection Observer -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.menu-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>
